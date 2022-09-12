@@ -23,6 +23,12 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+| At this E2E testing, you test following scenarios work properly.
+
+- Access to the home page then login screen is shown
+- Able to login with ID and password for a test user
+- The text “Global” is shown on the screen after login
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
