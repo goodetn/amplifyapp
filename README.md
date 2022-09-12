@@ -1,8 +1,10 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-[Heroku host](https://amplifyapp.herokuapp.com/)
-[AWS host](https://main.diuugoqw2dxy7.amplifyapp.com/)
+
+### Deployed on:
+> [Heroku host](https://amplifyapp.herokuapp.com/)
+> [AWS host](https://main.diuugoqw2dxy7.amplifyapp.com/)
 
 ## Available Scripts
 
