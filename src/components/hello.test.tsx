@@ -1,25 +1,26 @@
 import React from "react";
-import { render, unmountComponentAtNode } from 'react-dom';
+import { createRoot, Root } from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 
 import Hello from './hello';
 
 let container: HTMLDivElement;
+let root: Root;
 
 beforeEach(() => {
   container = document.createElement('div');
   document.body.appendChild(container);
+  root = createRoot(container!);
 });
 
 afterEach(() => {
   // cleanup on exiting
-  unmountComponentAtNode(container);
-  container.remove();
+  root.unmount();
 });
 
 it('render with or without a name', () => {
   act(() => {
-    render(<Hello />, container);
+    root.render(<Hello />);
   });
   expect(container.textContent).toBe("Hey, stranger");
 });
