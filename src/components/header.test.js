@@ -1,7 +1,3 @@
-import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
-import Header from './header';
-
 // test case:
 // describe('header component', () => {
 //     const header = ReactTestUtils.renderIntoDocument(<Header />);
@@ -15,3 +11,9 @@ import Header from './header';
 //         var node = ReactTestUtils.findRenderedDOMComponentWithClass(header, 'title');
 //     });
 // });
+
+describe('header component describe', () => {
+});
+
+test('header component test', () => {
+});
