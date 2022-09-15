@@ -18,5 +18,5 @@ expect.extend({
 
 test('is divisible by external value', async () => {
   await expect(3).toBeDivisibleByExternalValue();
-  await expect(6).not.toBeDivisibleByExternalValue();
+  await expect(2).not.toBeDivisibleByExternalValue();
 })
