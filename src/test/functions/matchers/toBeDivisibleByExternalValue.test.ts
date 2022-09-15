@@ -1,4 +1,4 @@
-const remoteFn = () => new Promise(resolve => {
+const remoteFn = () => new Promise<number>(resolve => {
   setTimeout(() => {
     resolve(3);
   }, 1500);
@@ -6,7 +6,7 @@ const remoteFn = () => new Promise(resolve => {
 
 expect.extend({
   async toBeDivisibleByExternalValue(received) {
-    const externalValue = await remoteFn();
+    const externalValue: number = await remoteFn();
     const pass = received % externalValue === 0;
     return pass ? {
       message: () => `Passed: expected ${received} % ${externalValue} = ${received % externalValue}`, pass,
