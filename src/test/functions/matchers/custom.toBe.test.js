@@ -34,3 +34,7 @@ expect.extend({
     return { actual: received, message, pass };
   },
 });
+
+test('toBe', () => {
+  expect(1 + 2).toBe(3);
+});
