@@ -23,4 +23,9 @@ it('render with or without a name', () => {
     root.render(<Hello />);
   });
   expect(container.textContent).toBe("Hey, stranger");
+  
+  act(() => {
+    root.render(<Hello name="tot" />);
+  });
+  expect(container.textContent).toBe("Hello, tot!");
 });
