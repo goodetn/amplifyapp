@@ -1,17 +1,16 @@
 import React from 'react';
-import { Link as RRDLink } from 'react-router-dom';
-import { create } from 'react-test-renderer';
+import { act as domAct } from 'react-dom/test-utils';
+import { act as testAct, create } from 'react-test-renderer';
+import App from './../App';
 
-type LinkProps = {
-  page: string;
-  children?: React.ReactNode;
-}
-const Link = (props: LinkProps) => <RRDLink to={props.page}>{props.children}</RRDLink>
+let root;
 
-it('renders correctly', () => {
-  const tree = create(<Link page="http://www.facebook.com">Facebook</Link>)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+it('should match snapshot', () => {
+  domAct(() => {
+    testAct(() => {
+      root = create(<App />);
+    });
+  });
 });
 
-// https://jestjs.io/docs/snapshot-testing#snapshot-testing-with-jest     =>  snapshot obsolete.
+expect(root).toMatchSnapshot();
