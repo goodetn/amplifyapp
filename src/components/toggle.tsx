@@ -5,11 +5,15 @@ type Types = {
 }
 export default function Toggle(props: Types) {
   const [press, setPress] = useState(false);
-  const handleClick = () => {
-    setPress(prev => !prev);
-    props.onChange(press);
-  }
-  return <button onClick={handleClick} data-testid="toggle">
-    {press ? 'Turn off' : 'Turn on'}
-  </button>
+  return (
+    <button
+      onClick={() => {
+        setPress(prev => !prev);
+        props.onChange(!press);
+      }}
+      data-testid="toggle"
+    >
+      {press === true ? 'Turn off' : 'Turn on'}
+    </button>
+  );
 }
