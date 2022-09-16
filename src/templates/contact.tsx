@@ -1,23 +1,19 @@
 import React from "react";
 import Map from "../components/map";
 
-type ContactTypes = {
-  name: string;
-  email: string;
-  site: string;
-}
-
 export type LatLngType = {
   lat: number;
   lng: number;
 }
 
-export default function Contact(props: ContactTypes) {
-  const center: LatLngType = {
-    lat: -3.745,
-    lng: -38.523
-  };
+type ContactTypes = {
+  name: string;
+  email: string;
+  site: string;
+  center: LatLngType;
+}
 
+export default function Contact(props: ContactTypes) {
   return (
     <div>
       <address>
@@ -29,7 +25,7 @@ export default function Contact(props: ContactTypes) {
           website
         </a>.
       </address>
-      <Map center={center} />
+      <Map center={props.center} />
     </div>
   );
 }
