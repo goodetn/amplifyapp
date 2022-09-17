@@ -13,7 +13,12 @@ module.exports = {
     sourceType: "module"
   },
   parser: "@typescript-eslint/parser",
-  plugins: ["react"],
+  env: {
+    browser: true,
+    es6: true,
+    "jest/globals": true,
+  },
+  plugins: ["@typescript-eslint", "react", "jest"],
   rules: {
     // I usually turn off these rules out of personal, feel free to delete the rules section in your project
     "@typescript-eslint/explicit-function-return-type": "off",
