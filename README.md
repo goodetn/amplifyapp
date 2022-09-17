@@ -74,3 +74,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Unit tests
+Unit tests make sure that functions behave as expected given some input.
+
+Pure functions lend themselves well to unit testing.
+
+The React reducer we use contains the main logic of the app and is a pure function. For every given combination of state and action the function returns a new state.
+
+Jest is a testing framework that focuses on simplicity that will be used for unit and integration tests.
