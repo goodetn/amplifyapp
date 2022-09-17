@@ -50,9 +50,11 @@
     "eslint": "^8.23.1",
     "eslint-plugin-react": "^7.31.8",
     "husky": "^8.0.1",
+    "prettier": "^2.7.1",
     "react-test-renderer": "^18.2.0"
   },
   "husky": {
-    "pre-push": "tsc"
+    "pre-commit": "prettier --write \"src/*.ts\" \"src/**/*.ts*\"",
+    "pre-push": "tsc && yarn lint"
   }
 }
