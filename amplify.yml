@@ -1,25 +1,11 @@
 version: 1
 phases:
-  install:
-    commands:
-      - echo "install cypress dependencies..."
-      - npm install -g gatsby-cli
-      - npm install -g purgecss
-      - apt-get update
-      - apt-get install -y libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 xvfb
   preBuild:
     commands:
       - npm ci
   build:
     commands:
-      - npm install
       - npm run build
-      - aws s3 cp public/ "s3://blog.kylegalbraith.com/" --recursive --cache-control 'public, max-age=2628000'
-      - aws cloudfront create-invalidation --distribution-id E3SMHPICHT13MG --paths '/*'
-      - node_modules/.bin/cypress run
-  post_build:
-    commands:
-      - echo "post_build step"
 artifacts:
   baseDirectory: build
   files:
@@ -27,3 +13,21 @@ artifacts:
 cache:
   paths:
     - node_modules/**/*
+test:
+  artifacts:
+    baseDirectory: cypress
+    configFilePath: "**/mochawesome.json"
+    files:
+      - "**/*.png"
+      - "**/*.mp4"
+  phases:
+    preTest:
+      commands:
+        - npm install
+        - npm add mocha mochawesome mochawesome-merge mochawesome-report-generator
+    test:
+      commands:
+        - npx start-test 'npm start' 3000 'npx cypress run --reporter mochawesome --reporter-options "reportDir=cypress/report/mochawesome-report,overwrite=false,html=false,json=true,timestamp=mmddyyyy_HHMMss"'
+    postTest:
+      commands:
+        - npx mochawesome-merge cypress/report/mochawesome-report/mochawesome*.json > cypress/report/mochawesome.json
